@@ -109,6 +109,8 @@ public class SearchArtistFragment extends Fragment {
     private void updateArtistList() {
         SpotifyApi api = new SpotifyApi();
         SpotifyService spotify = api.getService();
+        // I used this post of the forum to the call of the API.
+        // https://discussions.udacity.com/t/spotify-api-examples/21933
         spotify.searchArtists(artistNameSearch, new Callback<ArtistsPager>() {
             @Override
             public void success(ArtistsPager artistsPager, Response response) {
