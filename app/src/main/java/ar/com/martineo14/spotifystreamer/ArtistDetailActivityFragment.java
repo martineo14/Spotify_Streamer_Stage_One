@@ -42,11 +42,11 @@ import kaaes.spotify.webapi.android.models.Tracks;
  */
 public class ArtistDetailActivityFragment extends Fragment {
 
+    public static final String ARTIST_ID = "artist_id";
     private static final String LOG_TAG = ArtistDetailActivityFragment.class.getSimpleName();
-
+    List<Track> tracksResult;
     private ArtistTracksListAdapter tracksListAdapter;
     private ListView listView;
-    List<Track> tracksResult;
     private String mArtistIDStr;
 
     @Override
@@ -60,8 +60,8 @@ public class ArtistDetailActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_artist_detail, container, false);
         Intent intent = getActivity().getIntent();
-        if (intent != null && intent.hasExtra("artist_id")) {
-            mArtistIDStr = intent.getStringExtra("artist_id");
+        if (intent != null && intent.hasExtra(ARTIST_ID)) {
+            mArtistIDStr = intent.getStringExtra(ARTIST_ID);
             listView = (ListView) rootView.findViewById(R.id.list_artist_top_ten);
             ArtistTopTenTask artistTopTenTask = new ArtistTopTenTask();
             artistTopTenTask.execute(mArtistIDStr);
@@ -69,8 +69,15 @@ public class ArtistDetailActivityFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
     public class ArtistTopTenTask extends AsyncTask<String, Void, Tracks> {
+
+        public static final String COUNTRY_CODE = "AR";
+
         @Override
         protected void onPreExecute() {
 
@@ -83,8 +90,8 @@ public class ArtistDetailActivityFragment extends Fragment {
                 SpotifyApi api = new SpotifyApi();
                 SpotifyService spotify = api.getService();
                 //https://github.com/kaaes/spotify-web-api-android/issues/82
-                Map<String, Object> options = new Hashtable<String, Object>();
-                options.put("country", "AR");
+                Map<String, Object> options = new Hashtable<>();
+                options.put("country", COUNTRY_CODE);
                 results = spotify.getArtistTopTrack(params[0], options);
                 return results;
             } catch (Exception e) {

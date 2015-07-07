@@ -44,11 +44,13 @@ import retrofit.client.Response;
  */
 public class SearchArtistFragment extends Fragment {
 
+    public static final String ARTIST_NAME = "artist_name";
+    public static final String ARTIST_ID = "artist_id";
+    List<Artist> artistResult;
     private String artistNameSearch;
     private ArtistListAdapter artistAdapter;
     private ListView listView;
     private SearchView searchView;
-    List<Artist> artistResult;
 
     public SearchArtistFragment() {
     }
@@ -72,7 +74,7 @@ public class SearchArtistFragment extends Fragment {
         searchView = (SearchView) view.findViewById(R.id.search_artist);
 
         if (savedInstanceState != null) {
-            artistNameSearch = savedInstanceState.getString("artist_name");
+            artistNameSearch = savedInstanceState.getString(ARTIST_NAME);
             searchView.setQuery(artistNameSearch, false);
             updateArtistList();
         }
@@ -87,7 +89,6 @@ public class SearchArtistFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // TODO Auto-generated method stub
                 return false;
             }
         });
@@ -98,8 +99,8 @@ public class SearchArtistFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Artist artist = artistAdapter.getItem(position);
                 Intent intent = new Intent(getActivity(), ArtistDetailActivity.class);
-                intent.putExtra("artist_id", artist.id);
-                intent.putExtra("artist_name", artist.name);
+                intent.putExtra(ARTIST_ID, artist.id);
+                intent.putExtra(ARTIST_NAME, artist.name);
                 startActivity(intent);
             }
         });
@@ -137,7 +138,7 @@ public class SearchArtistFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putString("artist_name", artistNameSearch);
+        outState.putString(ARTIST_NAME, artistNameSearch);
         super.onSaveInstanceState(outState);
     }
 }

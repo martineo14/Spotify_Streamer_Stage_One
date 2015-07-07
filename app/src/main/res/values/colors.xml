@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2015 Sergio Martin Pueyo
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,13 @@
   ~ limitations under the License.
   -->
 
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_artist_detail"
-    android:name="ar.com.martineo14.spotifystreamer.ArtistDetailActivityFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:descendantFocusability="beforeDescendants"
-    tools:layout="@layout/fragment_artist_detail" />
+<resources>
+    <color name="primary">#FF9800</color>
+    <color name="primary_dark">#F57C00</color>
+    <color name="primary_light">#FFE0B2</color>
+    <color name="accent">#FF5722</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#B6B6B6</color>
+</resources>

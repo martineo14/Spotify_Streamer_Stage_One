@@ -51,17 +51,16 @@ public class ArtistTracksListAdapter  extends ArrayAdapter<Track> {
         View rootView = LayoutInflater.from(getContext()).inflate(R.layout.artist_top_ten_item, parent, false);
 
         ImageView artist_image = (ImageView) rootView.findViewById(R.id.img_artist_top_ten_item);
-        //artist_image.setImageURI(trackModel.artistImage);
         List<Image> images = trackModel.album.images;
         if (images != null && images.size() > 0) {
             Picasso.with(context).load(trackModel.album.images.get(2).url).into(artist_image);
         }
         else
         {
-            //http://www.the-music-shop.com/wp-content/uploads/2015/02/placeholder.png
+            // I used an default image as placeholder
+            // /http://www.the-music-shop.com/wp-content/uploads/2015/02/placeholder.png
             Picasso.with(context).load(R.drawable.placeholder_music).into(artist_image);
         }
-        //Picasso.with(context).load(image.url).into(artist_image);
 
         TextView artist_album_name = (TextView) rootView.findViewById(R.id.album_name_artist_top_ten_item);
         artist_album_name.setText(trackModel.album.name);
