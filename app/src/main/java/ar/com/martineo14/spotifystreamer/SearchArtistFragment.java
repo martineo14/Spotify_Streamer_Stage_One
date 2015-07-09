@@ -51,10 +51,7 @@ public class SearchArtistFragment extends Fragment {
     private ArtistListAdapter artistAdapter;
     private ListView listView;
     private SearchView searchView;
-
-    public SearchArtistFragment() {
-    }
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

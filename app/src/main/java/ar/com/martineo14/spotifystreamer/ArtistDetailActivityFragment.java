@@ -52,7 +52,7 @@ public class ArtistDetailActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true );
+        setRetainInstance(true);
     }
 
     @Override
@@ -78,10 +78,6 @@ public class ArtistDetailActivityFragment extends Fragment {
 
         public static final String COUNTRY_CODE = "AR";
 
-        @Override
-        protected void onPreExecute() {
-
-        }
 
         @Override
         protected Tracks doInBackground(String... params) {

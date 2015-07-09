@@ -55,7 +55,11 @@ public class ArtistListAdapter extends ArrayAdapter<Artist> {
         //artist_image.setImageURI(artistModel.artistImage);
         List<Image> images = artistModel.images;
         if (images != null && images.size() > 0) {
-            Picasso.with(context).load(artistModel.images.get(2).url).into(artist_image);
+            if (images.size() >= 2) {
+                Picasso.with(context).load(artistModel.images.get(2).url).into(artist_image);
+            } else {
+                Picasso.with(context).load(artistModel.images.get(0).url).into(artist_image);
+            }
         }
         else
         {
